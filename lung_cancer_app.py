@@ -8,14 +8,18 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import LabelEncoder
 
-# Load the dataset
+# Load the dataset and clean column names
 @st.cache_data
 def load_data():
     df = pd.read_csv("survey_lung_cancer.csv")
+
+    # Strip column name spaces
+    df.columns = df.columns.str.strip()
+
+    # Map categorical to numeric
     df["GENDER"] = df["GENDER"].map({'M': 0, 'F': 1})
     df["LUNG_CANCER"] = df["LUNG_CANCER"].map({'YES': 1, 'NO': 0})
     return df
-
 df = load_data()
 
 # Sidebar inputs
@@ -48,8 +52,8 @@ def user_input_features():
         'ANXIETY': ANXIETY,
         'PEER_PRESSURE': PEER_PRESSURE,
         'CHRONIC DISEASE': CHRONIC_DISEASE,
-        'FATIGUE ': FATIGUE,
-        'ALLERGY ': ALLERGY,
+        'FATIGUE': FATIGUE,
+        'ALLERGY': ALLERGY,
         'WHEEZING': WHEEZING,
         'ALCOHOL CONSUMING': ALCOHOL_CONSUMING,
         'COUGHING': COUGHING,
@@ -57,6 +61,7 @@ def user_input_features():
         'SWALLOWING DIFFICULTY': SWALLOWING_DIFFICULTY,
         'CHEST PAIN': CHEST_PAIN
     }
+
 
     return pd.DataFrame(data, index=[0])
 
