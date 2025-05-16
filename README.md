@@ -40,7 +40,7 @@ These metrics provide a comprehensive view of each model's predictive capabiliti
 
 An interactive **Streamlit** app was created to make the lung cancer prediction tool accessible to users with no coding background.
 
-🔗 [Live Streamlit App](https://github.com/NeelmaniRam)  
+🔗 [Live Streamlit App](https://lungcancerdetection-neelmani.streamlit.app/)  
 Deployed version of the streamlit.
 
 ---
